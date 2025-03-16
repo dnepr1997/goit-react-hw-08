@@ -1,7 +1,7 @@
 import s from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchData } from '../../redux/contacts/contactsOps';
+import { fetchContacts } from '../../redux/contacts/contactsOps';
 import { Routes, Route } from 'react-router-dom';
 import { ContactsPage } from '../../pages/ContactsPage/ContactsPage';
 import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
@@ -39,13 +39,14 @@ export const App = () => {
               </PrivateRoute>
             }
           />
+
+          <Route
+            path="/login"
+            element={<RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />}
+          />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route
-          path="/login"
-          element={<RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />}
-        />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

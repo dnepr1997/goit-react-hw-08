@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const NotFoundPage = () => {
-  return <div>NotFound</div>;
+  return <p>404. Something went wrong. Page not found</p>;
 };

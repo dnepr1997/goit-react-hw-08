@@ -11,7 +11,7 @@
 
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 
-import { deleteContact, fetchData, addContact } from './contactsOps';
+import { deleteContact, fetchContacts, addContact } from './contactsOps';
 import { selectNameFilter } from '../filters/filtersSlice';
 import { logoutThunk } from '../auth/authOperations';
 
@@ -37,15 +37,15 @@ const slice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchData.fulfilled, (state, action) => {
+      .addCase(fetchContacts.fulfilled, (state, action) => {
         state.items = action.payload;
         state.loading = false;
       })
-      .addCase(fetchData.pending, (state, action) => {
+      .addCase(fetchContacts.pending, (state, action) => {
         state.loading = true;
       })
       .addCase(logoutThunk.fulfilled, () => initialState)
-      .addCase(fetchData.rejected, (state, action) => {
+      .addCase(fetchContacts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
