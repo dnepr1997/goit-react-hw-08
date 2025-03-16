@@ -12,7 +12,8 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 import { deleteContact, fetchData, addContact } from './contactsOps';
-import { selectNameFilter } from './filtersSlice';
+import { selectNameFilter } from '../filters/filtersSlice';
+import { logoutThunk } from '../auth/authOperations';
 
 const initialState = {
   items: [],
@@ -33,24 +34,7 @@ export const selectFilteredContacts = createSelector(
 const slice = createSlice({
   name: 'contacts',
   initialState,
-  // reducers: {
-  //   deleteContact: (state, action) => {
-  //     state.items = state.items.filter(item => item.id !== action.payload);
-  //   },
-  //   addContact: (state, action) => {
-  //     state.items.push({ id: nanoid(), ...action.payload });
-  //   },
-  //   fetchContacts: (state, action) => {
-  //     state.items = action.payload;
-  //     state.loading = false;
-  //   },
-  //   setError: (state, action) => {
-  //     state.error = action.payload;
-  //   },
-  //   setLoading: (state, action) => {
-  //     state.loading = action.payload;
-  //   },
-  // },
+
   extraReducers: builder => {
     builder
       .addCase(fetchData.fulfilled, (state, action) => {
@@ -60,6 +44,7 @@ const slice = createSlice({
       .addCase(fetchData.pending, (state, action) => {
         state.loading = true;
       })
+      .addCase(logoutThunk.fulfilled, () => initialState)
       .addCase(fetchData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;

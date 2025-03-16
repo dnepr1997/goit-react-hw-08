@@ -1,8 +1,16 @@
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, replace } from 'formik';
 import React from 'react';
 import s from './LoginPage.module.css';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from '../../redux/auth/authOperations';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const initialValues = {
     email: '',
     password: '',
@@ -10,6 +18,15 @@ export const LoginPage = () => {
 
   const handleSubmit = (values, options) => {
     console.log(values);
+    dispatch(loginThunk(values))
+      .unwrap()
+      .then(() => {
+        toast.success('Login successful!');
+        setTimeout(() => navigate('/contacts', { replace: true }), 800);
+      })
+      .catch(() => {
+        toast.error('Invalid data');
+      });
     options.resetForm();
   };
   return (
@@ -25,10 +42,14 @@ export const LoginPage = () => {
             <Field name="password" type="password" className={s.input} />
           </label>
           <button type="submit" className={s.button}>
-            Register
+            Login
           </button>
+          <p>
+            You do not have account yet? <Link to="/register">Get it!</Link>
+          </p>
         </Form>
       </Formik>
+      <ToastContainer />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import css from './ContactForm.module.css';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/contactsOps';
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),

@@ -9,7 +9,6 @@ export const Contact = ({ contact, onDelete }) => {
           <IoPerson /> {contact.name}
         </p>
         <p>
-          {' '}
           <IoCall /> {contact.number}
         </p>
       </div>
