@@ -10,7 +10,7 @@ import { HomePage } from '../../pages/HomePage/HomePage';
 import { LoginPage } from '../../pages/LoginPage/LoginPage';
 
 import { Layout } from '../Layout/Layout';
-import { refreshUser } from '../../redux/auth/authOperations';
+import { refreshUser } from '../../redux/auth/operations';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { RestrictedRoute } from '../RestrictedRoute/RestrictedRoute';

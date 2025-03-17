@@ -1,7 +1,7 @@
 import axios from 'axios';
 // import { fetchContacts, setError, setLoading } from './contactsSlice';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../auth/authOperations';
+import { api } from '../auth/operations';
 
 axios.defaults.baseURL = 'https://67c8bfc20acf98d07087a1fe.mockapi.io/';
 

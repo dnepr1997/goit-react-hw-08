@@ -13,7 +13,7 @@ import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 import { deleteContact, fetchContacts, addContact } from './contactsOps';
 import { selectNameFilter } from '../filters/filtersSlice';
-import { logoutThunk } from '../auth/authOperations';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   items: [],

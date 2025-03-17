@@ -3,7 +3,7 @@ import s from './Navigation.module.css';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
-import { logoutThunk } from '../../redux/auth/authOperations';
+import { logoutThunk } from '../../redux/auth/operations';
 
 export const Navigation = () => {
   const user = useSelector(selectUser);

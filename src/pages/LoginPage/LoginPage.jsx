@@ -2,7 +2,7 @@ import { Field, Form, Formik, replace } from 'formik';
 import React from 'react';
 import s from './LoginPage.module.css';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from '../../redux/auth/authOperations';
+import { loginThunk } from '../../redux/auth/operations';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
