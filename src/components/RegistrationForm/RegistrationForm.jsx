@@ -1,11 +1,11 @@
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import s from './RegisterPage.module.css';
+import s from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 import { Link } from 'react-router-dom';
 
-export const RegisterPage = () => {
+export const RegistrationForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
     name: '',

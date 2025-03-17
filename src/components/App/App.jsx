@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { Routes, Route } from 'react-router-dom';
 import { ContactsPage } from '../../pages/ContactsPage/ContactsPage';
-import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
+import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
 import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage';
 import { HomePage } from '../../pages/HomePage/HomePage';
-import { LoginPage } from '../../pages/LoginPage/LoginPage';
+import { LoginPage } from '../../pages/LoginForm/LoginForm';
 
 import { Layout } from '../Layout/Layout';
 import { refreshUser } from '../../redux/auth/operations';
@@ -26,25 +26,22 @@ export const App = () => {
   //   dispatch(fetchData());
   // }, [dispatch]);
 
-  return isRefreshing ? null : (
+  if (isRefreshing) return <p>Loading...</p>;
+  return (
     <div className={s.form}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route
             path="/contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
+            element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />}
           />
 
           <Route
             path="/login"
             element={<RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />}
           />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register" element={<RegistrationForm />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
