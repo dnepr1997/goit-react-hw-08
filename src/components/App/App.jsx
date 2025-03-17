@@ -1,7 +1,7 @@
 import s from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contacts/contactsOps';
+import { fetchContacts } from '../../redux/contacts/operations';
 import { Routes, Route } from 'react-router-dom';
 import { ContactsPage } from '../../pages/ContactsPage/ContactsPage';
 import { RegisterPage } from '../../pages/RegisterPage/RegisterPage';
